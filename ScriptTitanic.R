@@ -101,6 +101,19 @@ boxplot(testAnalisis$SibSp)
 boxplot(testAnalisis$Parch)
 boxplot(testAnalisis$Fare)
 
+# Distribucion variable
+# Para el conjunto de datos de entrenamiento
+hist(entrenamientoAnalisis$Age)
+hist(entrenamientoAnalisis$SibSp)
+hist(entrenamientoAnalisis$Parch)
+hist(entrenamientoAnalisis$Fare)
+# Para el conjunto de datos de test
+hist(testAnalisis$Age)
+hist(testAnalisis$SibSp)
+hist(testAnalisis$Parch)
+hist(testAnalisis$Fare)
+
+
 
 nrow(entrenamientoAnalisis) 
 entrenamientoAnalisis<-entrenamientoAnalisis[remove_outliers(entrenamientoAnalisis$Fare,1)==FALSE,]
@@ -117,6 +130,31 @@ shapiro.test(testAnalisis$Age)
 shapiro.test(testAnalisis$SibSp)
 shapiro.test(testAnalisis$Parch)
 shapiro.test(testAnalisis$Fare)
+
+# Comprobacion grafica de la normalidad
+qqnorm(entrenamientoAnalisis$Age, pch = 1, frame = FALSE)
+qqline(entrenamientoAnalisis$Age, col = "steelblue", lwd = 2)
+
+qqnorm(entrenamientoAnalisis$SibSp, pch = 1, frame = FALSE)
+qqline(entrenamientoAnalisis$SibSp, col = "steelblue", lwd = 2)
+
+qqnorm(entrenamientoAnalisis$Parch, pch = 1, frame = FALSE)
+qqline(entrenamientoAnalisis$Parch, col = "steelblue", lwd = 2)
+
+qqnorm(entrenamientoAnalisis$Fare, pch = 1, frame = FALSE)
+qqline(entrenamientoAnalisis$Fare, col = "steelblue", lwd = 2)
+
+qqnorm(testAnalisis$Age, pch = 1, frame = FALSE)
+qqline(testAnalisis$Age, col = "steelblue", lwd = 2)
+
+qqnorm(testAnalisis$SibSp, pch = 1, frame = FALSE)
+qqline(testAnalisis$SibSp, col = "steelblue", lwd = 2)
+
+qqnorm(testAnalisis$Parch, pch = 1, frame = FALSE)
+qqline(testAnalisis$Parch, col = "steelblue", lwd = 2)
+
+qqnorm(testAnalisis$Fare, pch = 1, frame = FALSE)
+qqline(testAnalisis$Fare, col = "steelblue", lwd = 2)
 
 
 # Test de Levene para la homogeneidad de varianza
@@ -165,7 +203,6 @@ fourfoldplot(tablePrediccionAD, color = c("#CC6666", "#99CC99"), conf.level = 0,
 
 # Grafico arbol decision
 rpart.plot(clasifcadorAD)
-
 
 
 # Regresion logistica
